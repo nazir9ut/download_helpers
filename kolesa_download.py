@@ -6,7 +6,7 @@ pp = pprint.PrettyPrinter(indent=4)
 def mprint(str):
     pp.pprint(str)
 
-from helpers import *
+from kolesa_helpers import *
 
 
 
@@ -15,13 +15,27 @@ total_pages =  get_total_pages()
 
 
 for page_num in range(total_pages):
-    print(page_num)
+    print("PAGE NUMBER = " + str(page_num))
+
     page_ids = get_page_ids(page_num)
+
+    print(len(page_ids))
+
+    page_ids = remove_downloaded_page_ids(page_ids)
+
+    print(len(page_ids))
+
+    print('-------------------------')
+
     download_photos_by_page_ids(page_ids)
 
 
 
 
+list = ['abc-123', 'def-456', 'ghi-789']
+sub = 'abc'
+
+print [s for s in list if sub not in s]
 
 
 

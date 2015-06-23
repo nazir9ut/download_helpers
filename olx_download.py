@@ -7,9 +7,9 @@ from olx_helpers import *
 
 
 
-for page_num in range(500):
+for page_num in reversed(range(500)):
 
-    urls = get_urls(2)
+    urls = get_urls(page_num)
 
     for url in urls:
         print(url)
@@ -18,4 +18,4 @@ for page_num in range(500):
 
 
 
-download_photos_by_page_url('http://alma-ata.alm.olx.kz/obyavlenie/prodam-toyota-haylander-toyota-highlander-2008-ID5sYUN.html#adf81a6553;promoted')
+# download_photos_by_page_url('http://alma-ata.alm.olx.kz/obyavlenie/prodam-toyota-haylander-toyota-highlander-2008-ID5sYUN.html#adf81a6553;promoted')

@@ -9,8 +9,11 @@ import os.path
 
 
 
-def download_photos_by_page_url(url, path = 'olx_downloads'):
+def download_photos_by_page_url(url, path = '/media/naz/3534-E743/olx_downloads'):
     r = requests.get(url)
+
+    print("url")
+    print(url)
 
     soup = BeautifulSoup(r.text)
 
@@ -18,8 +21,6 @@ def download_photos_by_page_url(url, path = 'olx_downloads'):
 
 
     for p in photos_a:
-        print(p['href'])
-        print(p['href'].rsplit('/',1))
 
         if p['href']:
             path_and_file = path + '/' + p['href'].rsplit('/',1)[1]
@@ -29,16 +30,12 @@ def download_photos_by_page_url(url, path = 'olx_downloads'):
             if not exists:
                 urllib.urlretrieve (p['href'], path_and_file)
                 print(p['href'].rsplit('/',1)[1])
+            else:
+                print("EXISTS")
 
 
 
 
-
-
-
-# def download_photos_by_page_ids(page_ids):
-#     for page_id in page_ids:
-#         download_photos_by_page_id(page_id)
 
 
 
