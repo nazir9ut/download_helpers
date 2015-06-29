@@ -18,14 +18,18 @@ def download_photos_by_page_id(page_id, path = '/media/naz/3534-E743/kolesa_down
     for p in photos_a:
         path_and_file = path + "/" + page_id + "_" + p['href'].rsplit('/',1)[1]
 
+        # todo reserve download folder, in case of first folder is full
+        path_and_file2 = path + "2/" + page_id + "_" + p['href'].rsplit('/',1)[1]
+
         exists = os.path.isfile(path_and_file)
         if not exists:
             # print(p['href'])
+            print('DOWNLOADING ...')
             print(p['href'].rsplit('/',1)[1])
-            urllib.urlretrieve (p['href'], path_and_file)
+            urllib.urlretrieve (p['href'], path_and_file2)
         else:
             print("EXISTS")
-            print(p['href'])
+            # print(p['href'])
 
         print("-------------------------------------------------")
 

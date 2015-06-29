@@ -17,25 +17,16 @@ total_pages =  get_total_pages()
 for page_num in range(total_pages):
     print("PAGE NUMBER = " + str(page_num))
 
+    # get all page_ids from this page
     page_ids = get_page_ids(page_num)
 
-    print(len(page_ids))
-
+    # skip already downloaded page_ids
     page_ids = remove_downloaded_page_ids(page_ids)
 
-    print(len(page_ids))
-
-    print('-------------------------')
 
     download_photos_by_page_ids(page_ids)
 
 
-
-
-list = ['abc-123', 'def-456', 'ghi-789']
-sub = 'abc'
-
-print [s for s in list if sub not in s]
 
 
 
@@ -104,3 +95,8 @@ print [s for s in list if sub not in s]
 #
 # mprint(soup.find_all(class_=has_six_characters))
 
+
+
+
+# find all where href begins with
+# nomer_links = foto_hold_div.select('a[href^="nomer"]')
