@@ -1,6 +1,6 @@
 
 import socket
-socket.setdefaulttimeout(30)
+socket.setdefaulttimeout(60)
 
 from avto_helpers import *
 
@@ -11,7 +11,7 @@ from avto_helpers import *
 total_pages = 20080
 
 # todo
-current_page = 0
+current_page = 1180
 
 def download(start_page, total_pages):
 
@@ -38,6 +38,8 @@ while True:
         print("-------------------------------------------------------------------------------------------------------Naz, Time out")
     else:
         break
+
+
 
 
 

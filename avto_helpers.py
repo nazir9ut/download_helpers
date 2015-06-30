@@ -19,7 +19,7 @@ def get_page_ids(page_num):
 
     result = []
 
-    r = requests.get('http://platesmania.com/gallery.php?&region=01&start=' + str(page_num))
+    r = requests.get('http://platesmania.com/kz/gallery.php?&type=2&start=' + str(page_num))
 
 
     soup = BeautifulSoup(r.text)
@@ -42,12 +42,12 @@ def get_page_ids(page_num):
 
 
 
-def download_photos_by_page_id(page_id, path = '/media/naz/3534-E743/avto_nomera_downloads/ru/Cars_type_1_1a'):
+def download_photos_by_page_id(page_id, path = '/media/naz/3534-E743/avto_nomera_downloads/kz/Private_owners_1993'):
 
-    exists = os.path.isfile(path + "/" + 'ru' + page_id + '.jpg')
+    exists = os.path.isfile(path + "/" + 'kz' + page_id + '.jpg')
 
     if not exists:
-        r = requests.get('http://platesmania.com/foto' + page_id)
+        r = requests.get('http://platesmania.com/kz/foto' + page_id)
 
         soup = BeautifulSoup(r.text)
 
@@ -69,7 +69,7 @@ def download_photos_by_page_id(page_id, path = '/media/naz/3534-E743/avto_nomera
 
 
 
-    print(path + "/" + 'ru' + page_id + '.jpg')
+    print(path + "/" + 'kz' + page_id + '.jpg')
     print('------------------------------')
 
 
