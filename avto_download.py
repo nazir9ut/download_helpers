@@ -11,14 +11,12 @@ from avto_helpers import *
 total_pages = 20080
 
 # todo
-current_page = 1180
+current_page = 0
 
 def download(start_page, total_pages):
 
-    for page_num in xrange(start_page, total_pages, 1):
-        print("PAGE NUMBER = " + str(page_num))
+    for page_num in range(start_page, total_pages, 1):
 
-        # todo
         global current_page
         current_page = page_num
 
@@ -28,6 +26,10 @@ def download(start_page, total_pages):
 
 
         download_photos_by_page_ids(page_ids)
+
+
+
+
 
 
 
