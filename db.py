@@ -38,6 +38,7 @@ class Avtonomera(BaseModel):
     height = IntegerField()
     scale = CharField()
     points = TextField()
+    scaled_points = TextField()
 
 
 
