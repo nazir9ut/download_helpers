@@ -39,6 +39,7 @@ class Avtonomera(BaseModel):
     scale = CharField()
     points = TextField()
     scaled_points = TextField()
+    bounding_rects = TextField()
 
 
 
