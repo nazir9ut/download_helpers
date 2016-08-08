@@ -22,9 +22,9 @@ def get_page_ids(page_num):
 
     result = []
 
-    # print 'page_num ' + str(page_num)
+    print('page_num ' + str(page_num))
 
-    r = requests.get('http://platesmania.com/kz/gallery-' + str(page_num))
+    r = requests.get('http://platesmania.com/ee/gallery-' + str(page_num))
 
 
 
@@ -63,34 +63,35 @@ def get_page_ids(page_num):
 
 
 
-def download_photos_by_page_id(page_id, path = '/home/naz/Desktop/aaa'):
+def download_photos_by_page_id(page_id, path = '/home/naz/Desktop/ee'):
 
-    exists = os.path.isfile(path + "/" + 'kz' + page_id + '.jpg')
+    exists = os.path.isfile(path + "/" + page_id + '.jpg')
 
     if not exists:
-        r = requests.get('http://platesmania.com/kz/foto' + page_id)
+        r = requests.get('http://platesmania.com/ee/foto' + page_id)
 
         soup = BeautifulSoup(r.text, "lxml")
 
         img_tag = soup.find("img")
 
 
-        src = img_tag['src']
+
+        if img_tag:
+            src = img_tag['src']
+
+            if src:
+                path_and_file = path + "/" + src.rsplit('/', 1)[1]
 
 
-        if src:
-            path_and_file = path + "/" + src.rsplit('/', 1)[1]
+                print('DOWNLOADING ...' + src)
+                print('TO DIR ...' + path_and_file)
 
 
-            print('DOWNLOADING ...' + src)
-            print('TO DIR ...' + path_and_file)
+                req = urllib.request.Request(src, headers={'User-Agent': 'Mozilla/5.0'})
+                html = urllib.request.urlopen(req).read()
 
-
-            req = urllib.request.Request(src, headers={'User-Agent': 'Mozilla/5.0'})
-            html = urllib.request.urlopen(req).read()
-
-            with open(path_and_file, 'wb') as file_:
-                file_.write(html)
+                with open(path_and_file, 'wb') as file_:
+                    file_.write(html)
 
 
     else:

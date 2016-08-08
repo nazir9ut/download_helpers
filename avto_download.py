@@ -8,7 +8,7 @@ from avto_helpers import *
 
 
 
-total_pages = 20080
+total_pages = 1000
 
 # todo
 current_page = 0
