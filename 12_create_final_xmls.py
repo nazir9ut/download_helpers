@@ -16,12 +16,16 @@ for row in all_rows:
     print row.id
     print row.name.split('.')[0]
 
+
     bounding_rects = json.loads(row.bounding_rects)
+
 
     annotation = ET.Element("annotation")
 
+
     ET.SubElement(annotation, "folder").text = 'VOC2007'
     ET.SubElement(annotation, "filename").text = row.name.split('.')[0]
+
 
     source = ET.SubElement(annotation, "source")
     ET.SubElement(source, "database").text = "The VOC2007 Database"
@@ -29,9 +33,11 @@ for row in all_rows:
     ET.SubElement(source, "image").text = "flickr"
     ET.SubElement(source, "flickrid").text = row.name.split('.')[0]
 
+
     owner = ET.SubElement(annotation, "owner")
     ET.SubElement(owner, "flickrid").text = 'naz'
     ET.SubElement(owner, "name").text = "Thom Zemanek"
+
 
     size = ET.SubElement(annotation, "size")
     ET.SubElement(size, "width").text = str(int(row.width / float(row.scale)))
