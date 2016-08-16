@@ -13,8 +13,8 @@ final_xml_path = '/home/naz/Desktop/avto_6500/final_xml'
 
 
 for row in all_rows:
-    print row.id
-    print row.name.split('.')[0]
+    # print row.id
+    # print row.name.split('.')[0]
 
 
     bounding_rects = json.loads(row.bounding_rects)
@@ -40,8 +40,8 @@ for row in all_rows:
 
 
     size = ET.SubElement(annotation, "size")
-    ET.SubElement(size, "width").text = str(int(row.width / float(row.scale)))
-    ET.SubElement(size, "height").text = str(int(row.height / float(row.scale)))
+    ET.SubElement(size, "width").text = str(int(round(row.width / float(row.scale))))
+    ET.SubElement(size, "height").text = str(int(round(row.height / float(row.scale))))
     ET.SubElement(size, "depth").text = "3"
 
     ET.SubElement(annotation, "segmented").text = '0'
@@ -54,11 +54,17 @@ for row in all_rows:
         ET.SubElement(object, "truncated").text = "0"
         ET.SubElement(object, "difficult").text = "0"
 
+        xmin = str(bounding_rect[0])
+        ymin = str(bounding_rect[1])
+        xmax = str(bounding_rect[2])
+        ymax = str(bounding_rect[3])
+
+
         bndbox = ET.SubElement(object, "bndbox")
-        ET.SubElement(bndbox, "xmin").text = str(bounding_rect[0])
-        ET.SubElement(bndbox, "ymin").text = str(bounding_rect[1])
-        ET.SubElement(bndbox, "xmax").text = str(bounding_rect[0] + bounding_rect[2])
-        ET.SubElement(bndbox, "ymax").text = str(bounding_rect[1] + bounding_rect[3])
+        ET.SubElement(bndbox, "xmin").text = xmin
+        ET.SubElement(bndbox, "ymin").text = ymin
+        ET.SubElement(bndbox, "xmax").text = xmax
+        ET.SubElement(bndbox, "ymax").text = ymax
 
 
 
